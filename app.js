@@ -2,9 +2,9 @@ let dice = document.getElementById('dice')
 let holdResult = document.getElementById('holdResult')
 let actualResultPlayerOne = document.getElementById('actualResultPlayerOne')
 let actualResultPlayerTwo = document.getElementById('actualResultPlayerTwo')
+let totalResultPlayerOne = document.getElementById('totalResultPlayerOne')
+let totalResultPlayerTwo = document.getElementById('totalResultPlayerTwo')
 let waitingResult = []
-let finalPlayerOneResult = []
-let finalPlayerTwoResult = []
 let currentPlayer = "0"
 
 function rollDice() {
@@ -33,9 +33,9 @@ function sumResultsArr(result) {
     return sum
 }
 
-function saveFinalResult(waitingResult, activePlayer, result ) {
+function saveFinalResult(waitingResult, activePlayer, result) {
     if (activePlayer == "0") {
-        
+
         if (result != 1) {
             console.log(`player 1 and the number is ${result}`)
             actualResultPlayerOne.innerHTML = sumResultsArr(waitingResult)
@@ -45,6 +45,7 @@ function saveFinalResult(waitingResult, activePlayer, result ) {
         }
 
     } else {
+
         if (result != 1) {
             console.log(`player 2 and the number is ${result}`)   
             actualResultPlayerTwo.innerHTML = sumResultsArr(waitingResult)
@@ -54,5 +55,19 @@ function saveFinalResult(waitingResult, activePlayer, result ) {
         }
     }
 }
+
+
+holdResult.addEventListener("click", function holdResult() {
+
+    if (currentPlayer == "0") {
+        console.log(actualResultPlayerOne.textContent)
+        console.log(totalResultPlayerOne)
+    } else {
+        console.log(actualResultPlayerTwo.textContent)
+        console.log(totalResultPlayerTwo)
+    }
+    
+})
+
 
 dice.addEventListener("click", rollDice);
