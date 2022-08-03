@@ -121,7 +121,7 @@ body {
     transform: rotateX(90deg) rotateY(0deg) rotateZ(0deg);
 }
 
-#diceResult{
+#restart{
   position: absolute;
   bottom: 20px;
   left: 50%;
@@ -134,11 +134,11 @@ body {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
 }
 
-#diceResult.hide{
+#restart.hide{
   opacity: 0;
 }
 
-#diceResult.reveal{
+#restart.reveal{
   animation: fadeUp 0.3s forwards;
 }
 
@@ -153,3 +153,4 @@ body {
     bottom: 20px;
   }
 }
+
