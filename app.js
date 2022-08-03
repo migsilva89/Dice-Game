@@ -65,6 +65,7 @@ holdResult.addEventListener("click", function holdResult() {
     } else {
         console.log(actualResultPlayerTwo.textContent)
         console.log(totalResultPlayerTwo)
+        // teste branche
     }
     
 })
