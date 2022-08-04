@@ -9,6 +9,7 @@ let playerTwoContent = document.getElementById('playerTwo')
 let waitingResult = []
 let currentPlayer = "0"
 
+
 function rollDice() {
     let result = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
     dice.dataset.side = result;
@@ -29,7 +30,6 @@ function rollDice() {
 }
 
 function sumResultsArr(result) {
-    
     let sum = 0;
     for (let i = 0; i < result.length; i++) {
         sum += result[i];
@@ -74,8 +74,8 @@ function saveFinalResult(waitingResult, activePlayer, result) {
             actualResultPlayerOne.innerHTML = 0
         }
     }
+    
 }
-
 
 holdResult.addEventListener("click", function holdResult() {
 
@@ -108,6 +108,5 @@ holdResult.addEventListener("click", function holdResult() {
         }
     }
 })
-
 
 dice.addEventListener("click", rollDice);
