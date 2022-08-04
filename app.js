@@ -4,6 +4,8 @@ let actualResultPlayerOne = document.getElementById('actualResultPlayerOne')
 let actualResultPlayerTwo = document.getElementById('actualResultPlayerTwo')
 let totalResultPlayerOne = document.getElementById('totalResultPlayerOne')
 let totalResultPlayerTwo = document.getElementById('totalResultPlayerTwo')
+let playerOneContent = document.getElementById('playerOne')
+let playerTwoContent = document.getElementById('playerTwo')
 let waitingResult = []
 let currentPlayer = "0"
 
@@ -15,22 +17,40 @@ function rollDice() {
     if (result != 1) {
         waitingResult.push(result) 
     } else {
+        changeBgCurrentPlayer(currentPlayer)
         waitingResult = [0]
         if (currentPlayer == "0") {
             currentPlayer = "1"
         } else {
-            currentPlayer = "0"
+            currentPlayer = "0"           
         }
     }  
     saveFinalResult(waitingResult, currentPlayer, result)
 }
 
 function sumResultsArr(result) {
+    
     let sum = 0;
     for (let i = 0; i < result.length; i++) {
         sum += result[i];
     }
     return sum
+}
+
+function changeBgCurrentPlayer (currentPlayer){
+    if (currentPlayer == "0") {
+        currentPlayer = "1"
+        playerOneContent.classList.remove("bg-primary")
+        playerOneContent.classList.remove("text-light")
+        playerTwoContent.classList.add("bg-primary")
+        playerTwoContent.classList.add("text-light")
+    } else {
+        currentPlayer = "0"
+        playerTwoContent.classList.remove("bg-primary")
+        playerTwoContent.classList.remove("text-light")
+        playerOneContent.classList.add("bg-primary")
+        playerOneContent.classList.add("text-light")
+    }
 }
 
 function saveFinalResult(waitingResult, activePlayer, result) {
@@ -60,14 +80,33 @@ function saveFinalResult(waitingResult, activePlayer, result) {
 holdResult.addEventListener("click", function holdResult() {
 
     if (currentPlayer == "0") {
-        console.log(actualResultPlayerOne.textContent)
-        console.log(totalResultPlayerOne)
+        changeBgCurrentPlayer(currentPlayer)
+
+        finalresultOne = parseInt(totalResultPlayerOne.textContent) + parseInt(actualResultPlayerOne.textContent)
+        totalResultPlayerOne.textContent = finalresultOne
+
+        if (finalresultOne >= 100) {
+            alert("Player One WINS!!!!")
+        } else {
+            actualResultPlayerOne.textContent = "0"
+            waitingResult = [0]
+            currentPlayer = "1"
+        }
+        
     } else {
-        console.log(actualResultPlayerTwo.textContent)
-        console.log(totalResultPlayerTwo)
-        // teste branche
+        changeBgCurrentPlayer(currentPlayer)
+
+        finalresultTwo = parseInt(totalResultPlayerTwo.textContent) + parseInt(actualResultPlayerTwo.textContent)
+        totalResultPlayerTwo.textContent = finalresultTwo
+
+        if (finalresultTwo >= 100) {
+            alert("Player Two WINS!!!!")
+        } else {
+            actualResultPlayerTwo.textContent = "0"
+            waitingResult = [0]
+            currentPlayer = "0"
+        }
     }
-    
 })
 
 
