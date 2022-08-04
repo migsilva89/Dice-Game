@@ -9,24 +9,26 @@ let playerTwoContent = document.getElementById('playerTwo')
 let waitingResult = []
 let currentPlayer = "0"
 
+// teste
 
 function rollDice() {
     let result = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
     dice.dataset.side = result;
     dice.classList.toggle("reRoll");
-    
-    if (result != 1) {
-        waitingResult.push(result) 
-    } else {
-        changeBgCurrentPlayer(currentPlayer)
-        waitingResult = [0]
-        if (currentPlayer == "0") {
-            currentPlayer = "1"
+    setTimeout(() => {
+        if (result != 1) {
+            waitingResult.push(result) 
         } else {
-            currentPlayer = "0"           
-        }
-    }  
-    saveFinalResult(waitingResult, currentPlayer, result)
+            changeBgCurrentPlayer(currentPlayer)
+            waitingResult = [0]
+            if (currentPlayer == "0") {
+                currentPlayer = "1"
+            } else {
+                currentPlayer = "0"           
+            }
+        }  
+        saveFinalResult(waitingResult, currentPlayer, result)
+    }, "1500")
 }
 
 function sumResultsArr(result) {
