@@ -6,10 +6,9 @@ let totalResultPlayerOne = document.getElementById('totalResultPlayerOne')
 let totalResultPlayerTwo = document.getElementById('totalResultPlayerTwo')
 let playerOneContent = document.getElementById('playerOne')
 let playerTwoContent = document.getElementById('playerTwo')
+let restartBtn = document.getElementById('restart')
 let waitingResult = []
 let currentPlayer = "0"
-
-// teste
 
 function rollDice() {
     let result = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
@@ -59,24 +58,23 @@ function saveFinalResult(waitingResult, activePlayer, result) {
     if (activePlayer == "0") {
 
         if (result != 1) {
-            console.log(`player 1 and the number is ${result}`)
+            // console.log(`player 1 and the number is ${result}`)
             actualResultPlayerOne.innerHTML = sumResultsArr(waitingResult)
         } else {
-            console.log("YOU LOSE PLAYER 2")
+            // console.log("YOU LOSE PLAYER 2")
             actualResultPlayerTwo.innerHTML = 0
         }
 
     } else {
 
         if (result != 1) {
-            console.log(`player 2 and the number is ${result}`)   
+            // console.log(`player 2 and the number is ${result}`)   
             actualResultPlayerTwo.innerHTML = sumResultsArr(waitingResult)
         } else {
-            console.log("YOU LOSE PLAYER 1")
+            // console.log("YOU LOSE PLAYER 1")
             actualResultPlayerOne.innerHTML = 0
         }
-    }
-    
+    }  
 }
 
 holdResult.addEventListener("click", function holdResult() {
@@ -109,6 +107,18 @@ holdResult.addEventListener("click", function holdResult() {
             currentPlayer = "0"
         }
     }
+})
+
+restartBtn.addEventListener("click", function() {
+    currentPlayer = "0"
+    playerTwoContent.classList.remove("bg-primary")
+    playerTwoContent.classList.remove("text-light")
+    playerOneContent.classList.add("bg-primary")
+    playerOneContent.classList.add("text-light")
+    totalResultPlayerOne.textContent = "0"
+    totalResultPlayerTwo.textContent = "0"
+    actualResultPlayerTwo.textContent = "0"
+    actualResultPlayerOne.textContent = "0"
 })
 
 dice.addEventListener("click", rollDice);
